@@ -158,8 +158,8 @@ public partial class Form1 : Form
         }
 
         // Use binding list to auto-update UI if desired, or simple list reassignment
-        _summaryBindingSource.DataSource = _dataManager.Data.Devices.Values.ToList();
-        _historyBindingSource.DataSource = _dataManager.Data.Events.ToList();
+        _summaryBindingSource.DataSource = _dataManager.GetDeviceListSafe();
+        _historyBindingSource.DataSource = _dataManager.GetEventListSafe();
 
         // Refresh grids
         _gridSummary.Refresh();
