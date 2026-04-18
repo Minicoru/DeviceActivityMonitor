@@ -34,6 +34,22 @@ namespace DeviceMonitor
             }
         }
 
+        public List<DeviceInfo> GetDeviceListSafe()
+        {
+            lock (_lock)
+            {
+                return new List<DeviceInfo>(_data.Devices.Values);
+            }
+        }
+
+        public List<DeviceEvent> GetEventListSafe()
+        {
+            lock (_lock)
+            {
+                return new List<DeviceEvent>(_data.Events);
+            }
+        }
+
         private AppData LoadData()
         {
             try
